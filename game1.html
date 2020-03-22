@@ -31,7 +31,7 @@
     };
 
     var key1;
-    var cat;
+    var train;
     var number1 = 0;
     var number2 = 0;
     var number3 = 0;
@@ -48,8 +48,8 @@
 	 function preload(){
 		this.load.image('background','background.png');
 		this.load.image('BusStop','busstop.png');
-		this.load.image('cat','cat.png');
-        this.load.image('ground','assets/nen1.png');
+		this.load.image('train','cat.png');
+        this.load.image('ground','nen1.png');
 
 	}
 	function create(){
@@ -71,8 +71,8 @@
         Answer4 = this.add.text(590, 200, '', { fontSize: '32px', fill: '#000' });
         Answer5 = this.add.text(710, 200, '', { fontSize: '32px', fill: '#000' });
         
-        cat  = this.physics.add.sprite(100,300, 'cat');
-        this.physics.add.collider(cat, ground);
+        train  = this.physics.add.sprite(100,300, 'train');
+        this.physics.add.collider(train, ground);
         this.keyboard = this.input.keyboard.addKeys("THREE,FOUR,FIVE");
 
        
@@ -81,24 +81,24 @@
 	}
      
 	function update(){
-        cat.setVelocityX(100);
-        if (cat.x > 240) {
-            cat.setVelocityX(0);
+        train.setVelocityX(100);
+        if (train.x > 240) {
+            train.setVelocityX(0);
             number1 = 1;
             Answer1.setText(number1);
-             cat.setVelocityX(100);
+             train.setVelocityX(100);
         }
-        if (cat.x > 360) {
-            cat.setVelocityX(0);
+        if (train.x > 360) {
+            train.setVelocityX(0);
             number2 = 2;
             Answer2.setText(number2);
-            cat.setVelocityX(100);
+            train.setVelocityX(100);
              
         }
 
 
-        if (cat.x > 480) {
-            cat.setVelocityX(0);
+        if (train.x > 480) {
+            train.setVelocityX(0);
             if (this.keyboard.THREE.isDown === true){
                 number3 = 3;
                 Answer3.setText(number3);
@@ -107,11 +107,11 @@
 
         
 
-        if(cat.x > 400 && number3 == 3){
-                      cat.setVelocityX(100);
+        if(train.x > 400 && number3 == 3){
+                      train.setVelocityX(100);
                 }
-        if (cat.x > 600 && number4 == 0){
-            cat.setVelocityX(0);
+        if (train.x > 600 && number4 == 0){
+            train.setVelocityX(0);
             if (this.keyboard.FOUR.isDown === true){
                 number4 = 4;
                 Answer4.setText(number4);
@@ -119,19 +119,19 @@
         }
 
 
-        if(cat.x > 400 && number4 == 4){
-                      cat.setVelocityX(100);
+        if(train.x > 400 && number4 == 4){
+                      train.setVelocityX(100);
                 }
-          if (cat.x > 720 && number4 == 4){
-            cat.setVelocityX(0);
+          if (train.x > 720 && number4 == 4){
+            train.setVelocityX(0);
             if (this.keyboard.FIVE.isDown === true){
                 number5 = 5;
                 Answer5.setText(number5);
             }
         }
 
-        if(cat.x > 400 && number5 == 5){
-                      cat.setVelocityX(100);
+        if(train.x > 400 && number5 == 5){
+                      train.setVelocityX(100);
                 }
 
 
