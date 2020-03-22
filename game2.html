@@ -1,0 +1,166 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>Train</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+        var config = {
+        type: Phaser.CANVAS,
+        width: 1280,
+        height: 600,
+        physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 300 },
+            debug: false
+        }
+    },
+        scene: {
+            preload: preload,
+            create: create,
+            update: update
+        }
+    };
+    var game = new Phaser.Game(config);
+    var ylcircle1 ;
+    var ylcircle2 ;
+    var ylcircle3 ;
+    var ylcircle4 ;
+    var toa1;
+    var toa2;
+    var toa3;
+    var toa4;
+    var color1;
+    var train;
+    var number1 =1;
+    var number2 =2;
+    var number3 =3;
+    var number4 =4;
+    var number5 =5;
+
+    var test;
+ var purpleHalfWidth = 115/2;
+    var toaHalfHeight = 90/2;
+function preload ()
+{   this.load.image('background','background.png');
+    this.load.image('train','train.png');
+    this.load.image('toa', 'child.png');
+    this.load.image('track','track.png');
+    this.load.image('ylcircle','ylCircle.png');
+    this.load.image('blcircle','blCircle.png');
+    this.load.image('brown','brown.png');
+    this.load.image('fadedred','fadedred.png');
+    this.load.image('purple','purple.png');
+
+}
+
+function create ()
+{   
+   
+    test = this.add.group();
+ this.add.image(0,0,'background').setScale(3);
+    this.add.image(300,425,'track');
+    this.add.image(900,425,'track');
+    this.add.image(1200,425,'track');
+    color1 = this.add.image(320,425,'purple');
+    this.add.image(450,425,'purple');
+    this.add.image(580,425,'purple');
+    this.add.image(710,425,'purple');
+    
+    
+    
+    this.input.addPointer(2);
+    toa4 = this.add.sprite(1000, 300, 'toa').setInteractive({ draggable: true });
+    toa4.on('drag', function (pointer, dragX, dragY) {     
+        this.x = dragX;
+        this.y = dragY;
+    });
+
+     toa3 = this.add.sprite(800, 200, 'toa').setInteractive({ draggable: true });
+    toa3.on('drag', function (pointer, dragX, dragY) {
+        this.x = dragX;
+        this.y = dragY;
+    });
+
+     toa2 = this.add.sprite(600, 300, 'toa').setInteractive({ draggable: true });
+    toa2.on('drag', function (pointer, dragX, dragY) {
+        this.x = dragX;
+        this.y = dragY;
+    });
+
+      toa1 = this.add.sprite(400, 200, 'toa').setInteractive({ draggable: true });
+    toa1.on('drag', function (pointer, dragX, dragY) {
+        this.x = dragX;
+        this.y = dragY;
+    });
+   
+
+
+train = this.add.image(200,400,'train');
+
+ ylcircle1 = this.add.image(400,150,'ylcircle');
+ ylcircle2 = this.add.image(600,250,'ylcircle');
+ ylcircle3 = this.add.image(800,150,'ylcircle');
+ ylcircle4 = this.add.image(1000,250,'ylcircle');
+this.add.text(300,50,"sắp xếp các toa tàu theo thứ tự tăng dần",{ fontSize: '32px', fill: '#000' });
+numbertoa1 = this.add.text(390, 140, number1, { fontSize: '32px', fill: '#000' });
+numbertoa2 = this.add.text(590, 240, number2, { fontSize: '32px', fill: '#000' });
+numbertoa3 = this.add.text(790, 140, number3, { fontSize: '32px', fill: '#000' });
+numbertoa4 = this.add.text(990, 240, number4, { fontSize: '32px', fill: '#000' });
+
+
+
+}
+function update()
+{
+  ylcircle1.x = toa1.x;
+  ylcircle1.y = toa1.y -50;
+  numbertoa1.x = ylcircle1.x -10;
+  numbertoa1.y = ylcircle1.y -10;
+
+  ylcircle2.x = toa2.x;
+  ylcircle2.y = toa2.y -50;
+  numbertoa2.x = ylcircle2.x -10;
+  numbertoa2.y = ylcircle2.y -10;
+
+  ylcircle3.x = toa3.x;
+  ylcircle3.y = toa3.y -50;
+  numbertoa3.x = ylcircle3.x -10;
+  numbertoa3.y = ylcircle3.y -10;
+
+  ylcircle4.x = toa4.x;
+  ylcircle4.y = toa4.y -50;
+  numbertoa4.x = ylcircle4.x -10;
+  numbertoa4.y = ylcircle4.y -10;
+ 
+}
+function changecolor (color1){
+color1.setTint(0xff4040);
+}
+function checkOverlap(toa1, color1) {
+
+    var boundsA = toa1.getBounds();
+    var boundsB = color1.getBounds();
+
+    return Phaser.Rectangle.Intersects(boundsA, boundsB);
+
+}
+  function distancetoa (){
+    return purpleHalfWidth;
+
+
+    }
+
+
+
+    </script>
+</body>
+    </html>
